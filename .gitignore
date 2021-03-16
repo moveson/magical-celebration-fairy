@@ -1,0 +1,4 @@
+# Ignore .env file, which may contain sensitive information
+.env
+# Ignore all .idea files
+/.idea

@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+require_relative '../lib/scrape_notify'
+
+ScrapeNotify.perform(url: 'https://example.com',
+                     dom_element: 'h1',
+                     search_text: "Example Domain",
+                     notify_on: :matched,
+                     email_to: nil)
