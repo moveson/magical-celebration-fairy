@@ -1,8 +1,10 @@
 #!/usr/bin/env ruby
-require_relative '../lib/scrape_notify'
+require_relative "../lib/scrape_notify"
 
-ScrapeNotify.perform(url: 'https://example.com',
-                     dom_element: 'h1',
-                     search_text: "Example Domain",
-                     notify_on: :matched,
-                     email_to: nil)
+EMAIL_ADDRESSES = [
+  "jaroldeen@gmail.com",
+  "nekokata5788@gmail.com",
+  "jaimier@provo.edu",
+]
+
+ScrapeNotifyCelebrate.perform(email_addresses: EMAIL_ADDRESSES)
