@@ -34,7 +34,7 @@ class ScrapeNotifyCelebrate
       subject = "Start your day with a celebration"
 
       mail = Mail.new do
-        from email_from
+        from "Magical Celebration Fairy"
         to email_address
         subject subject
         body <<~BODY
