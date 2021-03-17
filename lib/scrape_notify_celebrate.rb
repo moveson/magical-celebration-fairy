@@ -11,8 +11,8 @@ class ScrapeNotifyCelebrate
 
   def self.perform(args)
     email_addresses = args[:email_addresses]
-    email_from = ENV["SNC_EMAIL_FROM"]
-    password = ENV["SNC_PASSWORD"]
+    email_from = ENV["MCF_EMAIL_FROM"]
+    password = ENV["MCF_PASSWORD"]
 
     html_text = Net::HTTP.get(CELEBRATE_URI)
     html = Nokogiri::HTML(html_text)

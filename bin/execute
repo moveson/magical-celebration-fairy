@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 require_relative "../lib/scrape_notify_celebrate"
 
-EMAIL_ADDRESSES = ENV["SNC_EMAIL_ADDRESSES"].split(",")
+EMAIL_ADDRESSES = ENV["MCF_EMAIL_ADDRESSES"].split(",")
 
 ScrapeNotifyCelebrate.perform(email_addresses: EMAIL_ADDRESSES)
