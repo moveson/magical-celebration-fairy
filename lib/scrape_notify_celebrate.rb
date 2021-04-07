@@ -38,11 +38,12 @@ class ScrapeNotifyCelebrate
     parent_div = html.css("#et-boc")
 
     ordinalized_day = "#{current_month} #{Time.current.day.ordinalize}"
-    p_element = parent_div.css("p:contains('#{ordinalized_day}hello')").first
+    p_element = parent_div.css("p:contains('#{ordinalized_day}')").first
     days_list = p_element.next_element
     list_items = days_list.css("li")
 
-    days_to_celebrate = list_items.map { |item| item.css("a").text }
+    # days_to_celebrate = list_items.map { |item| item.css("a").text }
+    days_to_celebrate = []
     fairy_is_broken = days_to_celebrate.empty?
 
     mail_options = { address: "smtp.gmail.com",
