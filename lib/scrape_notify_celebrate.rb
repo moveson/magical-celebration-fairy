@@ -42,8 +42,7 @@ class ScrapeNotifyCelebrate
     days_list = p_element.next_element
     list_items = days_list.css("li")
 
-    # days_to_celebrate = list_items.map { |item| item.css("a").text }
-    days_to_celebrate = []
+    days_to_celebrate = list_items.map { |item| item.css("a")&.text }
     fairy_is_broken = days_to_celebrate.empty?
 
     mail_options = { address: "smtp.gmail.com",
