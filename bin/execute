@@ -1,6 +1,21 @@
 #!/usr/bin/env ruby
 require_relative "../lib/scrape_notify_celebrate"
 
-EMAIL_ADDRESSES = ENV["MCF_EMAIL_ADDRESSES"].split(",")
+email_from = ENV["MCF_EMAIL_FROM"]
+password = ENV["MCF_PASSWORD"]
 
-ScrapeNotifyCelebrate.perform(email_addresses: EMAIL_ADDRESSES)
+mail_options =
+  { address: "smtp.gmail.com",
+    port: 587,
+    domain: "gmail.com",
+    user_name: email_from,
+    password: password,
+    authentication: "plain",
+    enable_starttls_auto: true }
+
+Mail.defaults { delivery_method :smtp, mail_options }
+
+email_addresses = ENV["MCF_EMAIL_ADDRESSES"].split(",")
+admin_email_address = ENV["MCF_ADMIN_EMAIL_TO"]
+
+ScrapeNotifyCelebrate.perform(email_addresses: email_addresses, admin_email_address: admin_email_address)
