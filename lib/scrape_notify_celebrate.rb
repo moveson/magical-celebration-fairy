@@ -86,7 +86,7 @@ class ScrapeNotifyCelebrate
   end
 
   def days_to_celebrate
-    @days_to_celebrate ||= list_items.map { |item| item.css("a")&.text }
+    @days_to_celebrate ||= list_items.map { |item| item.css("a")&.text }.select(&:present?)
   end
 
   def list_items
