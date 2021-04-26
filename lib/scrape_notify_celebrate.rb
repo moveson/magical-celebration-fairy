@@ -77,6 +77,10 @@ class ScrapeNotifyCelebrate
     end
   end
 
+  def fairy_is_broken?
+    days_to_celebrate.empty?
+  end
+
   def adjective
     FAIRY_ADJECTIVES.sample
   end
@@ -96,19 +100,12 @@ class ScrapeNotifyCelebrate
   end
 
   def html
+    celebrate_uri = URI("#{CELEBRATE_BASE_URI}#{current_month.downcase}/")
     html_text = Net::HTTP.get(celebrate_uri)
     Nokogiri::HTML(html_text)
   end
 
-  def celebrate_uri
-    URI("#{CELEBRATE_BASE_URI}#{current_month.downcase}/")
-  end
-
   def ordinalized_day
     "#{current_month} #{Time.current.day.ordinalize}"
-  end
-
-  def fairy_is_broken?
-    days_to_celebrate.empty?
   end
 end
