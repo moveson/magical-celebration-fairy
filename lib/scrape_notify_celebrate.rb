@@ -110,7 +110,7 @@ class ScrapeNotifyCelebrate
     "#{current_month} #{Time.current.day.ordinalize}"
   end
 
-  def ordinatlized_nbsp_day
+  def ordinalized_nbsp_day
     "#{current_month}#{NBSP}#{Time.current.day.ordinalize}"
   end
 end
