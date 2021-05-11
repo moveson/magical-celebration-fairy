@@ -33,7 +33,7 @@ class ScrapeNotifyCelebrate
   def initialize(args)
     @celebratory_email_addresses = args[:email_addresses]
     @admin_email_address = args[:admin_email_address]
-    @current_month = Time.current.strftime("%B")
+    @current_time = Time.current - 7.hours
   end
 
   def perform
@@ -54,7 +54,7 @@ class ScrapeNotifyCelebrate
 
   private
 
-  attr_reader :celebratory_email_addresses, :admin_email_address, :current_month
+  attr_reader :celebratory_email_addresses, :admin_email_address, :current_time
 
   def email_address_list
     fairy_is_broken? ? [admin_email_address] : celebratory_email_addresses
@@ -107,10 +107,14 @@ class ScrapeNotifyCelebrate
   end
 
   def ordinalized_day
-    "#{current_month} #{Time.current.day.ordinalize}"
+    "#{current_month} #{current_time.day.ordinalize}"
   end
 
   def ordinalized_nbsp_day
-    "#{current_month}#{NBSP}#{Time.current.day.ordinalize}"
+    "#{current_month}#{NBSP}#{current_time.day.ordinalize}"
+  end
+
+  def current_month
+    current_time.strftime("%B")
   end
 end
