@@ -33,7 +33,7 @@ class ScrapeNotifyCelebrate
   def initialize(args)
     @celebratory_email_addresses = args[:email_addresses]
     @admin_email_address = args[:admin_email_address]
-    @current_time = Time.current - 7.hours
+    @current_time = Time.current.in_time_zone("Mountain Time (US & Canada)")
   end
 
   def perform
