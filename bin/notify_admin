@@ -1,0 +1,27 @@
+#!/usr/bin/env ruby
+require_relative "../lib/scrape_notify_celebrate"
+
+email_from = ENV["MCF_EMAIL_FROM"]
+password = ENV["MCF_PASSWORD"]
+
+mail_options =
+  { address: "smtp.gmail.com",
+    port: 587,
+    domain: "gmail.com",
+    user_name: email_from,
+    password: password,
+    authentication: "plain",
+    enable_starttls_auto: true }
+
+Mail.defaults { delivery_method :smtp, mail_options }
+
+email_to = ENV["MCF_ADMIN_EMAIL_TO"]
+
+mail = Mail.new do
+  from "Magical Celebration Fairy"
+  to email_to
+  subject "The fairy is broken"
+  body "The command `ruby bin/execute` did not succeed. Something is terribly wrong!"
+end
+
+mail.deliver!
