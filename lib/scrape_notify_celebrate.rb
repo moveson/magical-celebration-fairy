@@ -8,6 +8,7 @@ require "nokogiri"
 
 class ScrapeNotifyCelebrate
   CELEBRATE_BASE_URI = "https://nationaldaycalendar.com/"
+  NBSP = [160].pack('U*')
   FAIRY_ADJECTIVES = [
     "a magical",
     "a fantastical",
@@ -90,7 +91,7 @@ class ScrapeNotifyCelebrate
   end
 
   def list_items
-    p_element = parent_div.css("p:contains('#{ordinalized_day}')").first
+    p_element = parent_div.css("p:contains('#{ordinalized_day}')").first || parent_div.css("p:contains('#{ordinalized_nbsp_day}')").first
     days_list = p_element.next_element
     days_list.css("li")
   end
@@ -107,5 +108,9 @@ class ScrapeNotifyCelebrate
 
   def ordinalized_day
     "#{current_month} #{Time.current.day.ordinalize}"
+  end
+
+  def ordinatlized_nbsp_day
+    "#{current_month}#{NBSP}#{Time.current.day.ordinalize}"
   end
 end
