@@ -91,7 +91,7 @@ class ScrapeNotifyCelebrate
   end
 
   def list_items
-    p_element = parent_div.css("p:contains('#{ordinalized_day}')").first || parent_div.css("p:contains('#{ordinalized_nbsp_day}')").first
+    p_element = parent_div.css("p:contains('#{month_and_day}')").first || parent_div.css("p:contains('#{nbsp_month_and_day}')").first
     days_list = p_element.next_element
     days_list.css("li")
   end
@@ -106,12 +106,12 @@ class ScrapeNotifyCelebrate
     Nokogiri::HTML(html_text)
   end
 
-  def ordinalized_day
-    "#{current_month} #{current_time.day.ordinalize}"
+  def month_and_day
+    "#{current_month} #{current_time.day}"
   end
 
-  def ordinalized_nbsp_day
-    "#{current_month}#{NBSP}#{current_time.day.ordinalize}"
+  def nbsp_month_and_day
+    "#{current_month}#{NBSP}#{current_time.day}"
   end
 
   def current_month
