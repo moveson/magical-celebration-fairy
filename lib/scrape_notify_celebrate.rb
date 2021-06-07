@@ -24,6 +24,16 @@ class ScrapeNotifyCelebrate
     "a brilliant",
     "a sensational",
     "a most unusual",
+    "a lovely",
+    "a most fortuitous",
+    "a glimmering, shimmering",
+    "an elegant",
+    "a wondrous",
+    "a gorgeous",
+    "an insightful",
+    "an adventurous",
+    "a captivating",
+    "a spicy",
   ].freeze
 
   def self.perform(args)
