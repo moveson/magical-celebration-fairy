@@ -34,6 +34,12 @@ class ScrapeNotifyCelebrate
     "an adventurous",
     "a captivating",
     "a spicy",
+    "a bodacious",
+    "a merry",
+    "an absurd",
+    "an exquisite",
+    "an arcadian",
+    "a magnanimous"
   ].freeze
 
   def self.perform(args)
