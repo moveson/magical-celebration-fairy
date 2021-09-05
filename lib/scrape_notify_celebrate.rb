@@ -107,7 +107,7 @@ class ScrapeNotifyCelebrate
   end
 
   def parent_div
-    html.css("#et-boc")
+    html.css("#et-boc").presence || html.css("main")
   end
 
   def html
