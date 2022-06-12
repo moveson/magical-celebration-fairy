@@ -64,6 +64,7 @@ class ScrapeNotifyCelebrate
         body body_text_local
       end
 
+      mail.charset = "UTF-8"
       mail.deliver!
     end
   end
